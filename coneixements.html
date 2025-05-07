@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coneixements</title>
+    <style>
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.intro {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  padding: 0 20px;
+  text-align: center;
+  background-image: url('img/coneicementsCapçalera.jpeg');
+  background-size: cover;        /* fa que la imatge cobreixi tot l’espai */
+  background-position: center;   /* centra la imatge */
+  background-repeat: no-repeat;  /* evita que es repeteixi */
+}
+
+
+.intro-text h1 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: 60px;
+  color: black; 
+
+  padding: 20px;
+  border-radius: 10px;
+}
+
+
+
+body {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: transparent;
+  z-index: 1000;
+}
+
+header .logo {
+  font-family:fantasy;
+  font-size: 24px;
+  color: #d3b4b4;
+  cursor: pointer;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li a {
+  display: block;
+  padding: 15px 20px;
+  color: rgb(54, 54, 54);
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #d3b4b4;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f5f5f5;
+  min-width: 150px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li a {
+  padding: 10px 15px;
+  background-color: white;
+}
+
+/* Estil del botó fletxa */
+.dropdown-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;  /* centra el contingut dins del li */
+}
+
+.dropdown-header a {
+  display: inline-block;    /* només ocupa l’espai del contingut */
+  text-align: center;
+  padding: 15px 10px;       /* ajusta el padding per separar una mica */
+}
+
+.submenu-toggle {
+  background: none;
+  border: none;
+  font-size: 18px;
+  margin-left: 5px;
+  cursor: pointer;
+  color: rgb(54, 54, 54);
+}
+
+
+/* Mostra la fletxa només en mòbil */
+@media (max-width: 768px) {
+  .submenu-toggle {
+      display: inline;
+  }
+}
+
+
+/* MENU TOGGLE (hamburguesa) */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #d3b4b4;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .menu-toggle {
+      display: block;
+  }
+
+  nav {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      background-color: transparent;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      background-color: #ffffff;
+  }
+
+  nav.active {
+      max-height: 500px;
+      transition: max-height 0.3s ease-in;
+  }
+
+  nav ul {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  nav ul li {
+      width: 100%;
+      text-align: center;
+  }
+
+  .dropdown:hover .dropdown-menu {
+      display: none; /* desactiva hover en mòbil */
+  }
+
+  .dropdown.open .dropdown-menu {
+      display: block; /* mostra submenu quan s’obre */
+      position: static;
+  }
+}
+
+.coneixements {
+  padding: 50px;
+  background: linear-gradient(to bottom, #ffffff, #f7eaea);
+  text-align: center;
+}
+
+.coneixements2 {
+  padding: 50px;
+  background: linear-gradient(to bottom, #f7eaea, #ffffff);
+  text-align: center;
+}
+
+.coneixements h2 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: 30px;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+
+.coneixements2 h2 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: 30px;
+  margin-bottom: 30px;
+  margin-top: 10px;
+}
+
+.coneixements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.coneixement-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.coneixement-card img {
+width: 100%;
+  height: 50%;    /* ocupa el 50% de l'alçada */
+  object-fit: cover;
+}
+
+.coneixement-card p {
+    margin-top: 10px;
+  font-size: 16px;
+  color: #333;
+
+}
+
+.coneixements button {
+    background-color: transparent;
+    color: #d3b4b4;
+    border: #d3b4b4 3px solid;
+    border-radius: 6px; /* una mica més arrodonit */
+    padding: 14px 28px; /* més gran per dins */
+    font-size: 14px;    /* augmenta la mida del text */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 50px;
+}
+
+
+.coneixements button:hover {
+  background-color: #d3b4b4;
+  color: #ffffff;
+}
+
+
+.coneixements2 button {
+    background-color: transparent;
+    color: #d3b4b4;
+    border: #d3b4b4 3px solid;
+    border-radius: 6px; /* una mica més arrodonit */
+    padding: 14px 28px; /* més gran per dins */
+    font-size: 14px;    /* augmenta la mida del text */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 50px;
+}
+
+
+.coneixements2 button:hover {
+  background-color: #d3b4b4;
+  color: #ffffff;
+}
+
+
+footer {
+  background-color: #d3b4b4;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-container p {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.footer-links a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: text-decoration 0.3s ease;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+    </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo" onclick="window.location.href='index.html'">jm</div>
+    <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+    <nav id="navbar">
+        <ul>
+            <li><a href="sobremi.html">Sobre mi</a></li>
+            <li><a href="coneixements.html">Coneixements</a></li>
+            <li class="dropdown">
+                <div class="dropdown-header">
+                    <a href="portfoli.html">Projectes</a>
+                    <button class="submenu-toggle" aria-label="Desplega submenu">&#9662;</button>
+                </div>
+                <ul class="dropdown-menu">
+                    <li><a href="art.html">Art</a></li>
+                    <li><a href="programació.html">Programació</a></li>
+                    <li><a href="videojocs.html">Videojocs</a></li>
+                    <li><a href="so.html">So</a></li>
+                </ul>
+            </li>
+            <li><a href="contacte.html">Contacte</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <section class="intro">
+        <div class="intro-text">
+            <h1>Coneixements</h1>
+        </div>
+    </section>
+    
+    
+
+    <div class="grid">
+        <!-- Programació i desenvolupament -->
+        <section class="coneixements">
+            <h2 style="margin-bottom: 50px;">PROGRAMACIÓ I DENSENVOLUPAMENT</h2>
+            <div class="coneixements-grid">
+              <div class="coneixement-card">
+                <img src="img/llenguatges.jpg" alt="Programació">
+                <h2>Llenguatges</h2>
+                <p>C, C++, C#, Python, Java, PHP</p>
+              </div>
+              <div class="coneixement-card">
+                <img src="img/web.webp" alt="Desenvolupament Web">
+                <h2>Web</h2>
+                <p>HTML, CSS, JavaScript/TypeScript (Vue.js, Angular, React, React Native, p5.js, Processing)</p>
+              </div>
+              <div class="coneixement-card">
+                <img src="img/Desarrollo-apps-moviles.jpg" alt="Desenvolupament Mòbil">
+                <h2>Mòbil</h2>
+                <p>Android Studio, Xcode (Swift), Laravel, Flutter</p>
+              </div>
+              <div class="coneixement-card">
+                <img src="img/diseno-de-base-de-datos-como-una-optima-estructura-es-vital.png" alt="Bases de Dades">
+                <h2>Bases de Dades</h2>
+                <p>Bases de dades, sistemes Cloud</p>
+              </div>
+            </div>
+
+            <button type="button" onclick="window.location.href='programació.html'">Projectes</button>
+          </section>
+
+        
+
+          
+         
+
+        <!-- Disseny -->
+        <section class="coneixements2">
+            <h2 style="margin-bottom: 50px;">DISSENY</h2>
+            <div class="coneixements-grid">
+              <div class="coneixement-card">
+                <img src="img/blender.jpg" alt="Blender">
+                <h2>Blender</h2>
+                <p>Blender (modelatge i animació 3D)</p>
+              </div>
+              <div class="coneixement-card">
+                <img src="img/adobe.png" alt="Adobe Creative Cloud">
+                <h2>Adobe</h2>
+                <p>Adobe Creative Cloud: Illustrator, Photoshop, After Effects, Premier, Animate</p>
+              </div>
+              <div class="coneixement-card">
+                <img src="img/figma.jpg" alt="Figma">
+                <h2>Figma</h2>
+                <p>Figma, UI/UX Design, Game Design</p>
+              </div>
+            </div>
+
+            <button type="button" onclick="window.location.href='art.html'">Projectes</button>
+          </section>
+
+
+       
+
+          
+
+        <!-- Videojocs -->
+        <section class="coneixements">
+            <h2 style="margin-bottom: 50px;">VIDEOJOCS</h2>
+            <div class="coneixements-grid">
+              <div class="coneixement-card">
+                <img src="img/unity.jpeg" alt="Unity">
+                <h2>Unity</h2>
+                <p>Unity (2D/3D)</p>
+              </div>
+              <div class="coneixement-card">
+                <img src="img/unreal.webp" alt="Unreal Engine">
+                <h2>Unreal Engine</h2>
+                <p>Unreal Engine (en formació)</p>
+              </div>
+              <div class="coneixement-card">
+                <img src="img/arVr.jpg" alt="AR/VR">
+                <h2>AR i VR</h2>
+                <p>AR i VR en Unity (en formació)</p>
+              </div>
+            </div>
+
+            <button type="button" onclick="window.location.href='videojocs.html'">Projectes</button>
+          </section>
+          
+          
+
+        <!-- So -->
+        <section class="coneixements2">
+            <h2 style="margin-bottom: 50px;">SO</h2>
+            <div class="coneixements-grid">
+              <div class="coneixement-card">
+                <img src="img/reaper.jpg" alt="Reaper">
+                <h2>Reaper</h2>
+                <p>Reaper (so i sonorització)</p>
+              </div>
+            </div>
+
+            <button type="button" onclick="window.location.href='so.html'">Projectes</button>
+          </section>
+          
+
+        
+    </div>
+
+
+    <script>
+      const menuToggle = document.getElementById('menu-toggle');
+      const navbar = document.getElementById('navbar');
+      const dropdowns = document.querySelectorAll('.dropdown');
+  
+      // Obrir/tancar menú principal
+      menuToggle.addEventListener('click', () => {
+          navbar.classList.toggle('active');
+      });
+  
+      // Obrir/tancar dropdowns en mòbil
+      dropdowns.forEach(dropdown => {
+          dropdown.addEventListener('click', function(e) {
+              e.stopPropagation();
+              this.classList.toggle('open');
+          });
+      });
+  </script>
+
+</body>
+
+
+<footer>
+    <div class="footer-container">
+        <p>&copy; 2025 El Meu Portafoli. Tots els drets reservats.</p>
+        <div class="footer-links">
+            <a href="sobremi.html">Sobre mi</a>
+            <a href="contacte.html">Contacte</a>
+            <a href="portfoli.html">Projectes</a>
+            <a href="coneixements.html">Coneixements</a>
+        </div>
+    </div>
+</footer>
+</html>
