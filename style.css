@@ -480,7 +480,13 @@ nav ul li a:hover {
   padding-top: 80px;
   text-align: center;
   padding-bottom: 50px;
+  word-wrap: break-word; /* permet trencar paraules si cal */
+  overflow-wrap: break-word; /* compatible amb més navegadors */
+  white-space: normal; /* permet salts de línia */
 }
+
+
+
 
 .tarjetes-container {
   display: flex;
