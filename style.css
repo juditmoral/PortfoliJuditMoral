@@ -414,6 +414,11 @@ nav ul li a:hover {
   }
 }
 
+@media (max-width: 480px) {
+  .ultims-projectes h2{
+    font-size: 24px;
+}
+
 .projecte {
   background: #ffffff;
   height: 450px;
