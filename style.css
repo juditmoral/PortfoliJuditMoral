@@ -416,7 +416,7 @@ nav ul li a:hover {
 
 .projecte {
   background: #ffffff;
-  height: 400px;
+  height: 450px;
   border-radius: 10px;
   overflow: hidden; /* per assegurar que res no surti del border */
   display: flex;
