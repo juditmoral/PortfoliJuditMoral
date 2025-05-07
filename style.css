@@ -483,9 +483,14 @@ nav ul li a:hover {
   word-wrap: break-word; /* permet trencar paraules si cal */
   overflow-wrap: break-word; /* compatible amb més navegadors */
   white-space: normal; /* permet salts de línia */
-  padding-left: 20px;
-  padding-right: 20px;
 }
+
+
+@media (max-width: 480px) {
+  .temes h2{
+    font-size: 24px;
+}
+
 
 
 
