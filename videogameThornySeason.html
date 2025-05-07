@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Thorny Season</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #ffffff, #ffffff, #f7eaea);
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: transparent;
+            z-index: 1000;
+        }
+
+        header .logo {
+            font-family: fantasy;
+            font-size: 24px;
+            color: #d3b4b4;
+            cursor: pointer;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 15px 20px;
+            color: rgb(54, 54, 54);
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #d3b4b4;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #f5f5f5;
+            min-width: 150px;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu li a {
+            padding: 10px 15px;
+            background-color: white;
+        }
+
+        /* Estil del botó fletxa */
+        .dropdown-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* centra el contingut dins del li */
+        }
+
+        .dropdown-header a {
+            display: inline-block;
+            /* només ocupa l’espai del contingut */
+            text-align: center;
+            padding: 15px 10px;
+            /* ajusta el padding per separar una mica */
+        }
+
+        .submenu-toggle {
+            background: none;
+            border: none;
+            font-size: 18px;
+            margin-left: 5px;
+            cursor: pointer;
+            color: rgb(54, 54, 54);
+        }
+
+
+        /* Mostra la fletxa només en mòbil */
+        @media (max-width: 768px) {
+            .submenu-toggle {
+                display: inline;
+            }
+        }
+
+
+        /* MENU TOGGLE (hamburguesa) */
+        .menu-toggle {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #d3b4b4;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: transparent;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+                background-color: #ffffff;
+            }
+
+            nav.active {
+                max-height: 500px;
+                transition: max-height 0.3s ease-in;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .dropdown:hover .dropdown-menu {
+                display: none;
+                /* desactiva hover en mòbil */
+            }
+
+            .dropdown.open .dropdown-menu {
+                display: block;
+                /* mostra submenu quan s’obre */
+                position: static;
+            }
+        }
+
+        .intro {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60vh;
+            padding: 0 20px;
+            text-align: center;
+            background-image: url('img/videogameThornySeason/Captura\ de\ pantalla\ 2025-05-05\ a\ las\ 19.32.59.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .intro::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(99, 99, 99, 0.4);
+        }
+
+        .intro-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        .intro-text h1 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-style: italic;
+            font-size: 60px;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .filmorb-projecte {
+            width: 90%;
+            max-width: 1000px;
+            margin: 40px auto;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .filmorb-projecte h2 {
+            font-size: 30px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-style: italic;
+        }
+
+        .filmorb-projecte ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .imatge {
+            width: 300px;
+            text-align: center;
+        }
+
+        .imatge img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .imatge img:hover {
+            transform: scale(1.05);
+        }
+
+        .imatge p {
+            margin-top: 8px;
+            font-size: 14px;
+        }
+
+        .filmorb-functionalities {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px auto;
+            max-width: 1000px;
+            margin-bottom: 70px;
+        }
+
+        .function-card {
+            background-color: #fffaf9;
+            border: 2px solid #d3b4b4;
+            border-radius: 15px;
+            width: 220px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .function-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .function-card i {
+            font-size: 40px;
+            color: #d3b4b4;
+            margin-bottom: 15px;
+        }
+
+        .function-card p {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .video-container iframe,
+        .video-container video {
+            width: 80%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+
+        footer {
+            background-color: #d3b4b4;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-container p {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .footer-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: text-decoration 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo" onclick="window.location.href='index.html'">jm</div>
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+        <nav id="navbar">
+            <ul>
+                <li><a href="sobremi.html">Sobre mi</a></li>
+                <li><a href="coneixements.html">Coneixements</a></li>
+                <li class="dropdown">
+                    <div class="dropdown-header">
+                        <a href="portfoli.html">Projectes</a>
+                        <button class="submenu-toggle" aria-label="Desplega submenu">&#9662;</button>
+                    </div>
+                    <ul class="dropdown-menu">
+                        <li><a href="art.html">Art</a></li>
+                        <li><a href="programació.html">Programació</a></li>
+                        <li><a href="videojocs.html">Videojocs</a></li>
+                        <li><a href="so.html">So</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacte.html">Contacte</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="intro">
+        <div class="intro-text">
+            <h1>Unity: Thorny Season</h1>
+        </div>
+    </section>
+
+    <section class="filmorb-projecte">
+
+        <h2>FUNCIONALITATS PRINCIPALS</h2>
+        <div class="filmorb-functionalities">
+            <div class="function-card"> <i class="fas fa-layer-group"></i>
+                <p>Quatre nivells de plataformes plens de desafiaments i obstacles</p>
+            </div>
+            <div class="function-card"> <i class="fas fa-heart"></i>
+                <p>Comença amb tres vides i mantén-te alerta per no perdre-les contra enemics o punxes</p>
+            </div>
+            <div class="function-card"> <i class="fas fa-coins"></i>
+                <p>Recull monedes durant el joc per comprar cors extres i allargar la partida</p>
+            </div>
+            <div class="function-card"> <i class="fas fa-skull-crossbones"></i>
+                <p>Enfronta’t a una emocionant batalla final contra el boss al nivell 4</p>
+            </div>
+            <div class="function-card"> <i class="fas fa-gamepad"></i>
+                <p>Joc desenvolupat amb Unity 2D, amb mecàniques senzilles però addictives</p>
+            </div>
+            <div class="function-card"> <i class="fas fa-save"></i>
+                <p>Guarda el teu progrés i estadístiques localment gràcies a l’ús de localStorage</p>
+            </div>
+        </div>
+
+
+
+
+
+        <section>
+            <h2>VÍDEO FINAL</h2>
+            <div class="video-container">
+                <!-- Substitueix el src amb l'enllaç al teu vídeo -->
+                <video controls>
+                    <source src="img/videogameThornySeason/810ee31d-f21c-4943-803e-64af87302d3a.MP4" type="video/mp4">
+                    El teu navegador no suporta el vídeo.
+                </video>
+            </div>
+        </section>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2025 El Meu Portafoli. Tots els drets reservats.</p>
+            <div class="footer-links">
+                <a href="sobremi.html">Sobre mi</a>
+                <a href="contacte.html">Contacte</a>
+                <a href="portfoli.html">Projectes</a>
+                <a href="coneixements.html">Coneixements</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const navbar = document.getElementById('navbar');
+        const dropdowns = document.querySelectorAll('.dropdown');
+
+        // Obrir/tancar menú principal
+        menuToggle.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+        });
+
+        // Obrir/tancar dropdowns en mòbil
+        dropdowns.forEach(dropdown => {
+            dropdown.addEventListener('click', function (e) {
+                e.stopPropagation();
+                this.classList.toggle('open');
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>
