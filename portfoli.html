@@ -189,6 +189,14 @@ nav ul li a:hover {
   border-radius: 10px;
 }
 
+@media (max-width: 480px) {
+
+  
+  
+  .intro-text h1 {
+    font-size: 40px;
+}
+
 
 .temes {
  
@@ -198,7 +206,7 @@ nav ul li a:hover {
 .temes h2 {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-style: italic;
-  font-size: 30px;
+  font-size: clamp(24px, 4vw, 30px);
   padding-top: 80px;
   text-align: center;
   padding-bottom: 50px;
@@ -322,13 +330,13 @@ footer {
 
     <section class="intro">
         <div class="intro-text">
-            <h1>Portfoli</h1>
+            <h1>Projectes</h1>
         </div>
     </section>
 
 
     <section class="temes">
-        <h2>PROJECTES</h2>
+        <h2>PROJECTES PER TEMES</h2>
         <div class="tarjetes-container">
             <div class="tarjeta">
                 <img src="img/artCapcalera.png" alt="">
