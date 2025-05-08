@@ -204,6 +204,16 @@
             border-radius: 10px;
         }
 
+        @media (max-width: 480px) {
+
+  
+  
+          .intro-text h1 {
+            font-size: 40px;
+            }
+
+        }
+
         .filmorb-projecte {
             width: 90%;
             max-width: 1000px;
@@ -213,7 +223,7 @@
         }
 
         .filmorb-projecte h2 {
-            font-size: 30px;
+            font-size: clamp(24px, 4vw, 30px);
             margin-top: 30px;
             margin-bottom: 15px;
             text-align: center;
@@ -299,6 +309,12 @@
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .video{
+
+            font-size: clamp(24px, 4vw, 30px);
+
         }
 
 
@@ -400,7 +416,7 @@
 
 
         <section>
-            <h2>VÍDEO FINAL</h2>
+            <h2 class="video">VÍDEO FINAL</h2>
             <div class="video-container">
                 <!-- Substitueix el src amb l'enllaç al teu vídeo -->
                 <video controls>
