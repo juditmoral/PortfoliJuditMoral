@@ -204,6 +204,16 @@
             border-radius: 10px;
         }
 
+        @media (max-width: 480px) {
+
+  
+  
+          .intro-text h1 {
+            font-size: 40px;
+            }
+
+        }
+
         .filmorb-projecte {
             width: 90%;
             max-width: 1000px;
@@ -213,7 +223,7 @@
         }
 
         .filmorb-projecte h2 {
-            font-size: 30px;
+            font-size: clamp(24px, 4vw, 30px);
             margin-top: 30px;
             margin-bottom: 15px;
             text-align: center;
@@ -292,6 +302,11 @@
         .function-card p {
             font-size: 16px;
             font-weight: bold;
+        }
+
+        .titol{
+
+            font-size: clamp(24px, 4vw, 30px);
         }
 
 
@@ -402,7 +417,7 @@
 
 
 
-        <h2>GALERIA DEL PROJECTE</h2>
+        <h2 class="titol">GALERIA DEL PROJECTE</h2>
 
         <div class="galeria">
             <div class="imatge" data-index="0">
