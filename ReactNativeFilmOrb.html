@@ -199,6 +199,16 @@ nav ul li a:hover {
             border-radius: 10px;
         }
 
+        @media (max-width: 480px) {
+
+  
+  
+          .intro-text h1 {
+            font-size: 40px;
+            }
+
+        }
+
         .filmorb-projecte {
             width: 90%;
             max-width: 1000px;
@@ -208,7 +218,7 @@ nav ul li a:hover {
         }
 
         .filmorb-projecte h2 {
-            font-size: 30px;
+            font-size: clamp( 24px, 4vw, 30px);
             margin-top: 30px;
             margin-bottom: 15px;
             text-align: center;
@@ -287,6 +297,11 @@ nav ul li a:hover {
         .function-card p {
             font-size: 16px;
             font-weight: bold;
+        }
+
+        .titol{
+
+            font-size: clamp(24px, 4vw, 30px);
         }
 
 
@@ -383,7 +398,7 @@ nav ul li a:hover {
             </div>
         </div>
 
-        <h2>GALERIA DEL PROJECTE</h2>
+        <h2 class="titol">GALERIA DEL PROJECTE</h2>
         <div class="galeria">
             <div class="imatge" data-index="0">
                 <img src="img/ReactNativeProjecte/ReactNativeInici.png" alt="Pàgina d'inici">
