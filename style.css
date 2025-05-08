@@ -414,14 +414,9 @@ nav ul li a:hover {
   }
 }
 
-@media (max-width: 480px) {
-  .ultims-projectes h2{
-    font-size: 24px;
-}
-
 .projecte {
   background: #ffffff;
-  height: 450px;
+  height: 400px;
   border-radius: 10px;
   overflow: hidden; /* per assegurar que res no surti del border */
   display: flex;
@@ -485,20 +480,7 @@ nav ul li a:hover {
   padding-top: 80px;
   text-align: center;
   padding-bottom: 50px;
-  word-wrap: break-word; /* permet trencar paraules si cal */
-  overflow-wrap: break-word; /* compatible amb més navegadors */
-  white-space: normal; /* permet salts de línia */
 }
-
-
-@media (max-width: 480px) {
-  .temes h2{
-    font-size: 24px;
-}
-
-
-
-
 
 .tarjetes-container {
   display: flex;
